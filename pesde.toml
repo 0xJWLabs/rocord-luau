@@ -1,0 +1,20 @@
+name = "0xjwlabs/rocord"
+version = "0.0.1"
+authors = ["0xJWLabs"]
+license = "MIT"
+
+[engines]
+lune = "^0.9.4"
+
+[target]
+environment = "lune"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[dependencies]
+discord = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/discord_luau" }
+discord_builders = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/builders" }
+discord_classes = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/classes" }
+logger = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/logger" }
+luauhono = { repo = "https://github.com/0xJWLabs/luauhono.git", rev = "f7cb510" }

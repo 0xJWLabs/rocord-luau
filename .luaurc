@@ -1,0 +1,10 @@
+{
+  "aliases": {
+    "rocord": "./src/",
+    "luau-polyfill": "./dependencies/luau-polyfill/",
+    "lune": "~/.lune/.typedefs/0.9.4/",
+    "dependencies": "./dependencies/",
+    "packages": "./lune_packages/",
+    "logger": "./lune_packages/logger.luau"
+  }
+}
