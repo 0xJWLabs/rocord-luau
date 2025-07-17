@@ -6,16 +6,23 @@ local Noblox = require("@dependencies/noblox.luau")
 local serde = require("@lune/serde")
 local process = require("@lune/process")
 
-type DiscordClient = DiscordLuau.Bot
+type DiscordClient = DiscordLuau.Client
 type Guild = DiscordClasses.Guild
 type Channel = DiscordClasses.Channel
+type Webhook = DiscordClasses.Webhook
 type AnyTable = { [any]: any }
+
+type PostMessageBody = {
+  userid: string | number,
+  name: string,
+  content: string
+}
 
 return function(client: DiscordClient)
 	local router = LuauHono.new()
 
 	router:post("/message", function(c)
-		local arguments = serde.decode("json", c.req.body)
+		local arguments = serde.decode("json", c.req.body) :: PostMessageBody
 		local userId = arguments.userid
 		local name = arguments.name
 		local content = arguments.content
@@ -29,7 +36,7 @@ return function(client: DiscordClient)
 
 		assert(webhookResult:isOk(), "Failed to get webhook: " .. tostring(webhookResult:unwrapErr()))
 
-		local webhook = webhookResult:unwrapOk() :: DiscordClasses.Webhook
+		local webhook = webhookResult:unwrapOk() :: Webhook
 
 		-- Update webhook with user display info
 		local updateResult = webhook

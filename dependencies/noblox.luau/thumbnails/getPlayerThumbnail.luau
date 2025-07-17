@@ -1,5 +1,5 @@
-local Roxios = require("@dependencies/Roxios")
-local LuauPolyfill = require("@dependencies/luau-polyfill")
+local Roxios = require("@packages/roxios")
+local LuauPolyfill = require("../polyfill")
 
 type ThumbnailFormat = "png" | "jpeg"
 
@@ -145,9 +145,13 @@ return function(
 
 	local url =
 		`https://thumbnails.roblox.com/v1/users/{endpoint}?userIds={Array.join(userIds, ",")}&size={size}&format={format}&isCircular={not not isCircular}`
-	local ok, data = Roxios.get(url):await()
-	if ok and data.data and #data.data > 0 then
-		return data.data[1].imageUrl
+	local rawData = Roxios.get(url):await()
+	if rawData:isOk() then
+		local data = rawData:unwrapOk()
+		print(data)
+		if data and data.data and #data.data > 0 then
+			return data.data[1].imageUrl
+		end
 	end
 
 	return

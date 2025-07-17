@@ -13,8 +13,10 @@ environment = "lune"
 default = "https://github.com/pesde-pkg/index"
 
 [dependencies]
-discord = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/discord_luau" }
-discord_builders = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/builders" }
-discord_classes = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/classes" }
-logger = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "3b61469", path = "packages/logger" }
-luauhono = { repo = "https://github.com/0xJWLabs/luauhono.git", rev = "f7cb510" }
+discord = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "890e313", path = "packages/discord_luau" }
+discord_builders = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "890e313", path = "packages/builders" }
+discord_classes = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "890e313", path = "packages/classes" }
+logger = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "890e313", path = "packages/logger" }
+luauhono = { repo = "https://github.com/0xJWLabs/luauhono.git", rev = "d8c9be9" }
+dotenv = { repo = "https://github.com/lune-utils/dotenv-luau.git", rev = "bd41550" }
+roxios = { repo = "https://github.com/lune-utils/roxios.git", rev = "4aaaa56" }

@@ -2,7 +2,7 @@ local DiscordLuau = require("@packages/discord")
 local DiscordClasses = require("@packages/discord_classes")
 local LuauHono = require("@packages/luauhono")
 
-type DiscordClient = DiscordLuau.Bot
+type DiscordClient = DiscordLuau.Client
 
 return function(client: DiscordClient)
 	local router = LuauHono.new()

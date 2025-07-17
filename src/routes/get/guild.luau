@@ -3,7 +3,7 @@ local LuauHono = require("@packages/luauhono")
 local DiscordClasses = require("@packages/discord_classes")
 local process = require("@lune/process")
 
-type DiscordClient = DiscordLuau.Bot
+type DiscordClient = DiscordLuau.Client
 type Guild = DiscordClasses.Guild
 type Channel = DiscordClasses.Channel
 type AnyTable = { [any]: any }

@@ -1,8 +1,7 @@
 local process = require("@lune/process")
 local DiscordLuau = require("@packages/discord")
-local Builders = require("@packages/discord_builders")
 local LuauHono = require("@packages/luauhono")
-local dotenv = require("@dependencies/dotenv")
+local dotenv = require("@packages/dotenv")
 local Logger = require("@packages/logger")
 
 local channelRoute = require("@rocord/routes/get/channel")
@@ -11,22 +10,21 @@ local getMessageRoute = require("@rocord/routes/get/message")
 local postMessageRoute = require("@rocord/routes/post/message")
 dotenv.config()
 
+local Client = DiscordLuau.Client
+
 local logger = Logger.new("RoCord")
 local app = LuauHono.new()
 
 local token = process.env.DISCORD_TOKEN
 
-local DiscordClient = DiscordLuau.bot.new({
-	token = token,
-	intents = Builders.intents
-		.new({
-			"Guilds",
-			"GuildMessages",
-			"MessageContent",
-			"DirectMessages",
-			"GuildVoiceStates",
-		})
-		:build(),
+local DiscordClient = Client.new({
+	intents = {
+    "Guilds",
+		"GuildMessages",
+		"MessageContent",
+		"DirectMessages",
+		"GuildVoiceStates",
+	},
 })
 
 -- DiscordClient:setVerbose(true)
@@ -40,4 +38,4 @@ DiscordClient.onReady:listen(function()
 	logger:debug(`Connect to WebApp`)
 end)
 
-DiscordClient:connectAsync():await()
+DiscordClient:login(token):await()

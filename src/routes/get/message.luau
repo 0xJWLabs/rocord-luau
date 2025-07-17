@@ -5,6 +5,7 @@ local DiscordClasses = require("@packages/discord_classes")
 type DiscordClient = DiscordLuau.Bot
 type Guild = DiscordClasses.Guild
 type Channel = DiscordClasses.Channel
+type Message = DiscordClasses.Message
 type AnyTable = { [any]: any }
 
 return function(client: DiscordClient)
@@ -34,7 +35,8 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-		return c:json(rawMessage:unwrapOk())
+    local message = rawMessage:unwrapOk() :: Message
+		return c:json(message)
 	end)
 
 	router:get("/message/:channelid/:id/author", function(c)
@@ -52,7 +54,7 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-		local message = rawMessage:unwrapOk()
+		local message = rawMessage:unwrapOk() :: Message
 
 		return c:json(message.author)
 	end)

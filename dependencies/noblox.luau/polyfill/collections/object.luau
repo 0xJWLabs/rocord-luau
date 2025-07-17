@@ -1,10 +1,8 @@
 local types = require("../types")
 
 type Array<T> = types.Array<T>
-type Set<T> = types.Set<T>
 type Table = { [any]: any }
 type Tuple<T, V> = types.Tuple<T, V>
-type Map<K, V> = types.Map<K, V>
 
 local Object = {}
 
@@ -53,7 +51,7 @@ function Object.values<T>(value: { [string]: T } | Array<T> | string): Array<T> 
 	return array
 end
 
-function Object.entries<T>(value: string | { [string]: T } | Array<T> | Map<any, T>): Array<Tuple<string, T>>
+function Object.entries<T>(value: string | { [string]: T } | Array<T>): Array<Tuple<string, T>>
 	assert(value :: any ~= nil, "cannot get entries from a nil value")
 	local valueType = typeof(value)
 
