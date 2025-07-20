@@ -19,7 +19,7 @@ local token = process.env.DISCORD_TOKEN
 
 local DiscordClient = Client.new({
 	intents = {
-    "Guilds",
+		"Guilds",
 		"GuildMessages",
 		"MessageContent",
 		"DirectMessages",

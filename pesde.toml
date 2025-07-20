@@ -20,3 +20,4 @@ logger = { repo = "https://github.com/0xJWLabs/discord-luau.git", rev = "890e313
 luauhono = { repo = "https://github.com/0xJWLabs/luauhono.git", rev = "d8c9be9" }
 dotenv = { repo = "https://github.com/lune-utils/dotenv-luau.git", rev = "bd41550" }
 roxios = { repo = "https://github.com/lune-utils/roxios.git", rev = "4aaaa56" }
+noblox = { repo = "https://github.com/lune-utils/noblox.luau.git", rev = "d5d8b06" }

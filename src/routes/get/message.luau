@@ -2,7 +2,7 @@ local DiscordLuau = require("@packages/discord")
 local LuauHono = require("@packages/luauhono")
 local DiscordClasses = require("@packages/discord_classes")
 
-type DiscordClient = DiscordLuau.Bot
+type DiscordClient = DiscordLuau.Client
 type Guild = DiscordClasses.Guild
 type Channel = DiscordClasses.Channel
 type Message = DiscordClasses.Message
@@ -35,7 +35,7 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-    local message = rawMessage:unwrapOk() :: Message
+		local message = rawMessage:unwrapOk() :: Message
 		return c:json(message)
 	end)
 

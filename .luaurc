@@ -2,7 +2,6 @@
   "aliases": {
     "rocord": "./src/",
     "lune": "~/.lune/.typedefs/0.9.4/",
-    "dependencies": "./dependencies/",
     "packages": "./lune_packages/"
   }
 }
