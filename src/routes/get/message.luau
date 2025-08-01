@@ -1,11 +1,7 @@
 local DiscordLuau = require("@packages/discord")
 local LuauHono = require("@packages/luauhono")
-local DiscordClasses = require("@packages/discord_classes")
 
 type DiscordClient = DiscordLuau.Client
-type Guild = DiscordClasses.Guild
-type Channel = DiscordClasses.Channel
-type Message = DiscordClasses.Message
 type AnyTable = { [any]: any }
 
 return function(client: DiscordClient)
@@ -22,20 +18,20 @@ return function(client: DiscordClient)
 		end
 
 		if rawChannel:isOk() then
-			local channel = rawChannel:unwrapOk() :: Channel
+			local channel = rawChannel:unwrapOk()
 			local rawMessage = channel:getMessageAsync(messageId)
 			if not rawMessage:isOk() then
 				return c:notFound()
 			end
 		end
 
-		local channel = rawChannel:unwrapOk() :: Channel
+		local channel = rawChannel:unwrapOk()
 		local rawMessage = channel:getMessageAsync(messageId)
 		if not rawMessage:isOk() then
 			return c:notFound()
 		end
 
-		local message = rawMessage:unwrapOk() :: Message
+		local message = rawMessage:unwrapOk()
 		return c:json(message)
 	end)
 
@@ -48,13 +44,13 @@ return function(client: DiscordClient)
 		if not rawChannel:isOk() then
 			return c:notFound()
 		end
-		local channel = rawChannel:unwrapOk() :: Channel
+		local channel = rawChannel:unwrapOk()
 		local rawMessage = channel:getMessageAsync(messageId):await()
 		if not rawMessage:isOk() then
 			return c:notFound()
 		end
 
-		local message = rawMessage:unwrapOk() :: Message
+		local message = rawMessage:unwrapOk()
 
 		return c:json(message.author)
 	end)

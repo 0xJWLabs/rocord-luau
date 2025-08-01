@@ -1,15 +1,11 @@
 local DiscordLuau = require("@packages/discord")
 local LuauHono = require("@packages/luauhono")
-local DiscordClasses = require("@packages/discord_classes")
 local Noblox = require("@packages/noblox")
 
 local serde = require("@lune/serde")
 local process = require("@lune/process")
 
 type DiscordClient = DiscordLuau.Client
-type Guild = DiscordClasses.Guild
-type Channel = DiscordClasses.Channel
-type Webhook = DiscordClasses.Webhook
 type AnyTable = { [any]: any }
 
 type PostMessageBody = {
@@ -32,12 +28,11 @@ return function(client: DiscordClient)
 		assert(typeof(content) == "string" and content ~= "", "Invalid or missing 'content'")
 
 		local avatarUrl = Noblox.getPlayerThumbnail(tonumber(userId) :: number, "420x420", "png", true, "headshot")
-		print(avatarUrl)
 		local webhookResult = client:getWebhookAsync(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN):await()
 
 		assert(webhookResult:isOk(), "Failed to get webhook: " .. tostring(webhookResult:unwrapErr()))
 
-		local webhook = webhookResult:unwrapOk() :: Webhook
+		local webhook = webhookResult:unwrapOk()
 
 		-- Update webhook with user display info
 		local updateResult = webhook

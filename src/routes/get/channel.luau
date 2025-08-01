@@ -1,5 +1,4 @@
 local DiscordLuau = require("@packages/discord")
-local DiscordClasses = require("@packages/discord_classes")
 local LuauHono = require("@packages/luauhono")
 
 type DiscordClient = DiscordLuau.Client
@@ -13,7 +12,7 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-		local channel = rawChannel:unwrapOk() :: DiscordClasses.Channel
+		local channel = rawChannel:unwrapOk()
 		return c:json(channel)
 	end)
 
@@ -24,7 +23,7 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-		local channel = rawChannel:unwrapOk() :: DiscordClasses.Channel
+		local channel = rawChannel:unwrapOk()
 		local rawMessages = channel:getMessagesAsync():await()
 		if not rawMessages:isOk() then
 			return c:notFound()

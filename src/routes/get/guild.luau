@@ -1,11 +1,8 @@
 local DiscordLuau = require("@packages/discord")
 local LuauHono = require("@packages/luauhono")
-local DiscordClasses = require("@packages/discord_classes")
 local process = require("@lune/process")
 
 type DiscordClient = DiscordLuau.Client
-type Guild = DiscordClasses.Guild
-type Channel = DiscordClasses.Channel
 type AnyTable = { [any]: any }
 
 return function(client: DiscordClient)
@@ -17,12 +14,12 @@ return function(client: DiscordClient)
 			return c:notFound()
 		end
 
-		local guild: Guild = guildResult:unwrapOk()
+		local guild = guildResult:unwrapOk()
 		local channelsResult = guild:getChannelsAsync():await()
 
 		-- local cleanGuild: AnyTable = Utilities.CloneClean(guild)
 		if channelsResult:isOk() then
-			local channels: { Channel } = channelsResult:unwrapOk()
+			local channels = channelsResult:unwrapOk()
 			guild.channels = channels
 		else
 			guild.channels = {}
